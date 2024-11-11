@@ -67,7 +67,7 @@ print(f"Price 3 is {price3:.0f}")
 loyer = float(input("Entrez la loyer: "))
 charge = float(input("Entrez la charge: "))
 aide = float(input("Entrez l'aide au logement: "))
-resources_mensuelles = 3760.0
+resources_mensuelles = float(input("Entrez le montant de ressources mensuelles: ")
 
 total = (((loyer + charge - aide) / resources_mensuelles) * 100 )
 
