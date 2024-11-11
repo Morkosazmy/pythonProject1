@@ -1,22 +1,42 @@
-# mini calculator
-
-#import math
+import math
 import time
+from itertools import count
 
-Timer = int(input("Enter time again "))
+'''vid 21: List, set, tuple'''
+#List = []
+#Set = {}
+#Tuple = ()
 
-seconds = Timer % 60
-minutes = int(Timer / 60) % 60
-hours = round(Timer / 3600)
+"""LISTS: Ordered and changeable ! (Can have duplicates) """
+games = ["God of war", "Uncharted", "The last of us", "Ghost of Tsushima"] #List
+print(games)
 
-print(f"Your countdown starts at : {hours:02}:{minutes:02}:{seconds:02}")
-#time.sleep(1)
+games.append("Ratchet and Clank")
+games.append("Ratchet and Clank")
+games.append("Ratchet and Clank")
+games.append("Ratchet and Clank")
+games.insert(4,"Elden ring")
+for game in games:
+    print(f"-{game}")
+games.sort()
+print()
+for game in games:
+    print(f"-{game}")
+print(games.count("Ratchet and Clank"))
 
-for x in range (Timer,0,-1):
-    seconds = x % 60
-    minutes = int(x / 60) % 60
-    hours = round(x / 3600)
 
-    print(f"{hours:02}:{minutes:02}:{seconds:02}")
-    time.sleep(1)
-print("TIME'S UP!")
+"""SETS: Unordered and immutable(cant change), (Can't have duplicates) , We can add or remove though ! """
+shapes = {"Circle", "Rectangle", "Square", "Cylinder","Circle"} # duplicates won't count when printing
+print(shapes)
+print("Circle" in shapes)
+
+
+"""TUPLES: Ordered but unchangeable Faster than a List, Duplicates are ok"""
+fruits = ("Mango", "Banana", "Orange", "Apple", "Strawberry", "Mango")
+print(fruits)
+print(fruits.index("Mango",1))
+print(fruits)
+for fruit in fruits:
+    print(f"-{fruit}")
+print(fruits.count("Mango"))
+print(fruits.count("Apple"))
