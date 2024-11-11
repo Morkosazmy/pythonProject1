@@ -1,29 +1,22 @@
 # mini calculator
 
-import math
+#import math
 import time
-from asyncio import wait_for
 
-'''vid 19 : nested loops'''
+Timer = int(input("Enter time again "))
 
-credit_card = "1234-5678-9012-3456"
+seconds = Timer % 60
+minutes = int(Timer / 60) % 60
+hours = round(Timer / 3600)
 
-for y in range (3):
-    print()
-    for x in range (1,10):
-        print(x, end="")
-    print()
+print(f"Your countdown starts at : {hours:02}:{minutes:02}:{seconds:02}")
+#time.sleep(1)
 
-rows = int(input("Enter the number of rows: "))
-columns = int(input("Enter the number of columns: "))
-symbol = input("Enter a symbol: ")
+for x in range (Timer,0,-1):
+    seconds = x % 60
+    minutes = int(x / 60) % 60
+    hours = round(x / 3600)
 
-for y in range(rows):
-    for x in range(columns):
-        print(symbol, end="")
-    print()
-
-
-
-for i in range(4): # equivalent of range(0,4)
-    print(i)
+    print(f"{hours:02}:{minutes:02}:{seconds:02}")
+    time.sleep(1)
+print("TIME'S UP!")
