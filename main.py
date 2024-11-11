@@ -35,5 +35,7 @@ total = initial * pow((1 + ( rate / 100 )),time)
 print(f"Your initial total was : ${initial}")
 print(f"The rate of interest is : {rate}%")
 print(f"The number of years is : {time} year(s).")
+profit = total - initial
 
 print(f"Your balance after {time} year(s) is : ${total:.2f}")
+print(f"Your profit is : ${profit}")
