@@ -2,7 +2,7 @@ import math
 import time
 from itertools import count
 
-'''vid 22: Shopping cart ! '''
+'''----- Shopping cart ! -----'''
 
 total = 0
 prices = []
@@ -27,3 +27,5 @@ for price in prices:
     total += price
 
 print(f"Your total is : ${total}")
+
+
