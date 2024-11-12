@@ -31,6 +31,7 @@ for line in groceries2:
 
 #The 2 for loops are identical.
 
+
 """----- 2D KEYPAD -----"""
 """
 num_pad = (( 1 , 2 , 3 ),
@@ -45,4 +46,3 @@ for row in num_pad:
         print(num,end=" ")
     print()
 """
-
