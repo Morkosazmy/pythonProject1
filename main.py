@@ -1,30 +1,48 @@
 import math
 import time
 
-'''----- Shopping cart ! -----'''
+'''-----vid 23: 2D Collections ! -----'''
 
-total = 0
-prices = []
-items = []
+fruits = ["Mango", "Pineapple", "Banana", "Apple", "Watermelon"]
+vegetables = ["Cucumber", "Tomato", "Onion", "Cabbage", "Eggplant"]
+meats = ["Beef", "Chicken", "Pork", "Fish"]
 
-while True:
-    item = input("Enter the name of the item that you would like to purchase please (q to quit) : ")
-    if item.lower() == "q":
-        break
-    else:
-        items.append(item)
-        price = float(input(f"Enter the price of a {item} please: $"))
-        prices.append(price)
+groceries = [fruits, vegetables, meats]
 
-print("----- YOUR SHOPPING CART -----")
-for item in range(0,len(items)-1):
-    print(items[item],end=", ")
-for item in range(len(items)-1,len(items)):
-    print(items[item],end=".\n")
+# OR
+
+groceries2 = [["Mango", "Pineapple", "Banana", "Apple", "Watermelon"],
+              ["Cucumber", "Tomato", "Onion", "Cabbage", "Eggplant"],
+              ["Beef", "Chicken", "Pork", "Fish"]]
+
+# grocerie2 is the same as groceries.
+
+for row in groceries:
+    for column in row:
+        print(column, end=" ")
+    print()
+
 print()
-for price in prices:
-    total += price
 
-print(f"Your total is : ${total}")
+for line in groceries2:
+    for food in line:
+        print(food, end=" ")
+    print()
 
+#The 2 for loops are identical.
+
+"""----- 2D KEYPAD -----"""
+"""
+num_pad = (( 1 , 2 , 3 ),
+          ( 4 , 5 , 6 ),
+          ( 7 , 8 , 9 ),
+          ("#", 0 ,"*"))
+#num_pad is a Tuple of Tuples
+#Print the numpad.
+
+for row in num_pad:
+    for num in row:
+        print(num,end=" ")
+    print()
+"""
 
