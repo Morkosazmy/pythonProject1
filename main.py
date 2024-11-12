@@ -1,6 +1,5 @@
 import math
 import time
-from itertools import count
 
 '''----- Shopping cart ! -----'''
 
