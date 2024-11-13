@@ -27,13 +27,20 @@ high = 100
 random_number = random.randint(low, high)
 
 while True:
-    guess = int(input("Guess a number between 1 & 100: "))
-    guesses += 1
-    if guess > random_number:
+    guess = input("Guess a number between 1 & 100: ")
+    #guesses += 1
+    if not guess.isdigit():
+        print("Please insert an actual number between 1 and 100")
+    elif int(guess) < 1 or int(guess) >100:
+        print("Number is out of range, please insert a number between 1 and 100")
+    elif int(guess) > random_number:
         print(f"your guess ( {guess} ) is too high")
-    elif guess < random_number:
+        guesses += 1
+    elif int(guess) < random_number:
         print(f"your guess ( {guess} ) is too low")
+        guesses += 1
     else:
+        guesses += 1
         print(f"({guess}) is the correct answer !")
         break
 print(f"This round took you {guesses} guesses !")
