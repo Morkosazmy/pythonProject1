@@ -1,29 +1,57 @@
 import random
-from time import process_time_ns
+print("Dice roller game ! ")
 
-#ROCK PAPER SCISSOR
+print("\u25CF \u250C \u2510 \u2500 \u2502 \u2514 \u2518 ")
+# ● ┌ ┐ ─ │ └ ┘
+dice_art = {1: ("┌─────────┐",
+                "│         │",
+                "│    ●    │",
+                "│         │",
+                "└─────────┘"),
+            2: ("┌─────────┐",
+                "│ ●       │",
+                "│         │",
+                "│       ● │",
+                "└─────────┘"),
+            3: ("┌─────────┐",
+                "│ ●       │",
+                "│    ●    │",
+                "│       ● │",
+                "└─────────┘"),
+            4: ("┌─────────┐",
+                "│ ●     ● │",
+                "│         │",
+                "│ ●     ● │",
+                "└─────────┘"),
+            5: ("┌─────────┐",
+                "│ ●     ● │",
+                "│    ●    │",
+                "│ ●     ● │",
+                "└─────────┘"),
+            6: ("┌─────────┐",
+                "│ ●     ● │",
+                "│ ●     ● │",
+                "│ ●     ● │",
+                "└─────────┘"),
+                }
 
-print("Welcome to the rock paper scissor game ! ")
 
-options = ["rock","paper","scissor"]
-playing = True
-while playing:
-    computer = random.choice(options)
-    player = input("Choose (rock, paper, scissor): ").lower()
-    if player not in options:
-        print("Invalid choice please chose again ! ")
-    elif player == computer:
-        print("Tie")
-    elif player == "rock" and computer == "scissor" or player == "paper" and computer == "rock" or player == "scissor" and computer == "paper":
-        print("You win ! ")
-    else:
-        print("You lose ! ")
-    print(f"you choose : {player}")
-    print(f"computer picked : {computer}")
-    if not input("Would you like to play again ? (y/n) ").lower() == "y":
-        playing = False
-        break
-    # elif player == "rock" and computer == "scissor":
-    # elif player == "rock" and computer == "scissor":
-print("Game Over ! ")
-print("Thanks for playing ! ")
+dice = []
+total = 0
+
+num_dice = int(input("How many dice would u like to throw ?"))
+
+for x in range(num_dice):
+    dice_roll = random.randint(1,6)
+    #print(dice_roll)
+    dice.append(dice_roll)
+    total += dice_roll
+
+#print(total)
+for line in range(5):
+    for die in dice:
+        print(dice_art.get(die)[line],end="  ")
+    print()
+
+print(f"your total is {total}")
+    #print(dice_art.get(1)[line])
