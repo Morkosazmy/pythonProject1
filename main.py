@@ -1,37 +1,32 @@
 import time
 
 
-def count(end, start = 0): #put start at the end because it has a default and a non default variable must be addressed before the defaulted one
-    for x in range(start, end+1):
-        print(x)
-        time.sleep(1)
-    print("DONE !")
+def total(*args):
+    total = 0
+    for arg in args:
+        total += arg
+    return total
+#print(total(1,2,3,4,5))
 
+def address(**kwargs):
+    address = ""
+    for key, value in kwargs.items():
+        print(f"{key} : {value}")
 
+#address(street_no = "123", street_name = "rue de blabla", commune = "Paris", pays = "France")
+def shipping_label(*args, **kwargs):
+    for arg in args:
+        print(arg, end=" ")
+    print()
+   # for value in kwargs.values(): # we can use for key, value in kwargs.items() as well !
+    print(f"{kwargs.get('street_no')} {kwargs.get('street_name')}")
+    if "code_postal" in kwargs:
+        print(f"{kwargs.get('code_postal')} {kwargs.get('commune')} {kwargs.get('pays')}")
+    else:
+        print(f"{kwargs.get('commune')} {kwargs.get('pays')}")
 
-#count(10,5)
-#count(7)
+    print()
 
-def hello( greeting, title, firstname, lastname):
-    print(f"{greeting} {title}{firstname} {lastname} !")
+print()
 
-hello("Hello", lastname= "Squarepants",firstname="Spongebob", title= "Mr.")
-hello("Hello", "Mr.", "Spongebob", lastname="Squarepants")
-
-def net_price(list_price,discount = 0,tva = 20): # insert the discount & TVA in percentage without typing the % symbol
-    final_price = list_price * (1 - (discount/100)) * (1 + (tva/100))
-    return final_price
-
-#goofy code where i separate the number in 2s instead of just typing them
-def get_number(country, carrier, rest_of_number):
-    rest_of_number = list(rest_of_number)
-    rest_of_number = rest_of_number[0] , rest_of_number[1] , rest_of_number[2] , rest_of_number[3] , rest_of_number[4] , rest_of_number[5] , rest_of_number[6] , rest_of_number[7]
-    rest_of_number = f"{rest_of_number[0]}{rest_of_number[1]} {rest_of_number[2]}{rest_of_number[3]} {rest_of_number[4]}{rest_of_number[5]} {rest_of_number[6]}{rest_of_number[7]}"
-    return f"{country} {carrier} {rest_of_number}"
-
-print(get_number("+33", carrier= "1",rest_of_number= "23456789"))
-
-print(net_price(500))
-print(net_price(500,20))
-print(net_price(500,20,0))
-print(net_price(500,0,0))
+shipping_label("Dr.","Spongebob","Squarepants","III",street_no = "123", street_name = "rue de blabla",code_postal="75000", commune = "Paris", pays = "France")
