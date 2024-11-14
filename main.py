@@ -1,57 +1,30 @@
+import string
 import random
-print("Dice roller game ! ")
+from operator import index
 
-print("\u25CF \u250C \u2510 \u2500 \u2502 \u2514 \u2518 ")
-# ● ┌ ┐ ─ │ └ ┘
-dice_art = {1: ("┌─────────┐",
-                "│         │",
-                "│    ●    │",
-                "│         │",
-                "└─────────┘"),
-            2: ("┌─────────┐",
-                "│ ●       │",
-                "│         │",
-                "│       ● │",
-                "└─────────┘"),
-            3: ("┌─────────┐",
-                "│ ●       │",
-                "│    ●    │",
-                "│       ● │",
-                "└─────────┘"),
-            4: ("┌─────────┐",
-                "│ ●     ● │",
-                "│         │",
-                "│ ●     ● │",
-                "└─────────┘"),
-            5: ("┌─────────┐",
-                "│ ●     ● │",
-                "│    ●    │",
-                "│ ●     ● │",
-                "└─────────┘"),
-            6: ("┌─────────┐",
-                "│ ●     ● │",
-                "│ ●     ● │",
-                "│ ●     ● │",
-                "└─────────┘"),
-                }
+chars = " " + string.digits + string.ascii_letters + string.punctuation
 
+chars = list(chars)
+keys = list.copy(chars)
+#print(chars)
+random.shuffle(keys)
+#print(keys)
 
-dice = []
-total = 0
+#Encryption
+message = input("Enter a message to encrypt: ")
+cipher_text = ""
+for letter in message:
+    index = chars.index(letter)
+    cipher_text += keys[index] # smh :/
+print(f"the encrypted message is : {cipher_text}")
 
-num_dice = int(input("How many dice would u like to throw ?"))
+#Decryption
 
-for x in range(num_dice):
-    dice_roll = random.randint(1,6)
-    #print(dice_roll)
-    dice.append(dice_roll)
-    total += dice_roll
+secret_message = input("Enter the encrypted message here to decrypt it: ")
+original_message = ""
+for letter in secret_message:
+    index = keys.index(letter)
+    original_message += chars[index]
+print(f"The original message is: {original_message}")
 
-#print(total)
-for line in range(5):
-    for die in dice:
-        print(dice_art.get(die)[line],end="  ")
-    print()
-
-print(f"your total is {total}")
-    #print(dice_art.get(1)[line])
+#Encryption and Decryption !
