@@ -1,30 +1,46 @@
-import string
-import random
-from operator import index
+#Creating functions !
+from typing import override
 
-chars = " " + string.digits + string.ascii_letters + string.punctuation
 
-chars = list(chars)
-keys = list.copy(chars)
-#print(chars)
-random.shuffle(keys)
-#print(keys)
+def happy_birthday():
+    print("Happiest of birthdays QUEER.")
+    print("Oh my bad i meant QUEEN hehe !")
+    for x in range(3):
+        print("CELEBRATION MOVES")
+def Dr_Han():
+    for x in range(3):
+        print("I AM A SURGEON !")
+    print("I AM A SURGEON DR HAN !")
+    print("I AM A SURGEON !")
 
-#Encryption
-message = input("Enter a message to encrypt: ")
-cipher_text = ""
-for letter in message:
-    index = chars.index(letter)
-    cipher_text += keys[index] # smh :/
-print(f"the encrypted message is : {cipher_text}")
+def add(num1,num2):
+    x = num1 + num2
+    return x
+def subtract(x,y):
+    z = x - y
+    return z
+def multiply(x,y):
+    z = x * y
+    return z
+def divide(x,y):
+    z = x / y
+    return z
+a = add(2,3)
+b = subtract(2,3)
+c = multiply(2,3)
+d = divide(2,3)
 
-#Decryption
+print(f"a = {a}\n"
+      f"b = {b}\n"
+      f"c = {c}\n"
+      f"d = {d:.2f}\n")
 
-secret_message = input("Enter the encrypted message here to decrypt it: ")
-original_message = ""
-for letter in secret_message:
-    index = keys.index(letter)
-    original_message += chars[index]
-print(f"The original message is: {original_message}")
+def create_name(prenom, nom):
+    firstname = prenom.capitalize()
+    lastname = nom.upper()
+    return lastname + " " + firstname
+my_name = create_name("prénom","nom")
+#cant use my_name.create_name cause that's for methods not functions and we created a function.
 
-#Encryption and Decryption !
+print(my_name)
+#print(add(3,5))
