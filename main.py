@@ -1,31 +1,36 @@
-#membership operators
-from itertools import count
+#List comprehension
 
-word = "APPLE"
+doubles = [ x * 2 for x in range(1,11)]
+triples = [ x * 3 for x in range(1,11)]
+halves =  [ x / 2 for x in range(1,11)]
+squares = [ pow(x,2) for x in range(1,11)]
+#squares =[ (x ** 2 or x * x) for x in range(1,11)]
+foods = ["apple", "banana", "mango", "pineapple", "Orange"]
+print(foods)
+foods = [food.upper() for food in foods]
+# or
+fruits = [fruit.upper() for fruit in ["apple", "banana", "mango", "pineapple", "Orange"]]
+print(doubles)
+print(triples)
+print(halves)
+print(squares)
+print(foods)
+print(fruits)
 
-letter = input("Guess the letter in the secret word : ")
+numbers = [1,2,3,4,5,6,-7,-8,-9,10,11,12,-13,14,-15,-16,17,18,19,20]
+positive_nums = [num for num in numbers if num >= 0]
+negative_nums = [num for num in numbers if num < 0]
+even_nums = [num for num in numbers if num % 2 == 0]
+odd_nums = [num for num in numbers if num % 2 == 1]
 
-if letter in word:
-    amount = word.count(letter)
-    print(f"The letter {letter} exists in the secret message {amount} times !")
-else:
-    print(f"The letter {letter} does NOT exist in the secret message !")
-
-grades = {"sandy" : "C",
-          "spongebob" : "B",
-          "squidward" : "A",
-          "patrick" : "D",
-          "plankton" : "F"}
-
-name = input("Enter the name for which the grade is desired : ")
-if name not in grades:
-    print("There was no student with that name ! ")
-else:
-    print(f"the student {name} got the grade {grades[name]}")
-
-email = input("Insert an email : ")
-
-if "@" in email and "." in email:
-    print("Valid email")
-else:
-    print("Invalid email")
+print(numbers)
+print(positive_nums)
+print(negative_nums)
+print(even_nums)
+print(odd_nums)
+grades = [86, 45, 32, 68, 48, 98, 90, 2, 32, 100, 59, 60]
+print(grades)
+passing_grades = [num for num in grades if num >= 60]
+failing_grades = [num for num in grades if num <  60]
+print(passing_grades)
+print(failing_grades)
