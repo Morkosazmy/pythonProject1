@@ -6,14 +6,47 @@
 #            add the twi-digit numbers together to get a single digit)
 #4. Sum the totals of step 2 & 3
 #5. If sum is divisible by 10, the credit card number is valid
+#from curses.ascii import isdigit
+#from idlelib.replace import replace
 
+#organized version
+credit_card_number = input("Enter the credit card's number : ")
+credit_card_number = credit_card_number.replace("-", "")
+credit_card_number = credit_card_number.replace(" ", "")
+credit_card_number = credit_card_number[::-1]
+
+total = 0
+
+for num in credit_card_number[::2]: # odd numberss
+    #print(num)
+    total += int(num)
+
+for num in credit_card_number[1::2]:
+    x = int(num) * 2
+    if x >= 10:
+        two_digit = str(x)
+        total +=  int(two_digit[0]) + int(two_digit[1])
+    else:
+        total += x
+
+if total % 10 == 0:
+    print("Valid")
+else:
+    print("Invalid")
+
+
+
+
+
+
+
+
+
+"""
 credit_card = input("Enter the credit card number : ")
 
-for letter in credit_card:
-    if letter == "-" or letter == " ":
-
-        credit_card = credit_card.replace("-","")
-        credit_card = credit_card.replace(" ","")
+credit_card = credit_card.replace("-","")
+credit_card = credit_card.replace(" ","")
 
 print(credit_card)
 odd_places = []
@@ -94,10 +127,11 @@ grand_total = total_even_numbers + total_odd_numbers
 
 print(f"grand_total = {grand_total}")
 
-if grand_total % 60 == 0:
+if grand_total % 10 == 0:
     print("Valid")
 else:
     print("Invalid card ! ")
 
 # I can't believe I actually did that lol ( messy as hell but still it works, gotta make functions
 # and organize it later )
+"""
