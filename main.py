@@ -1,59 +1,69 @@
-#Banking program !
-# withdraw, deposit, show balance !
-from re import match
+# SLOTS GAME
+import random
 
 
-def show_balance(balance):
-    print(f"${balance:.2f}")
-
-def deposit(balance):
-    amount = float(input("Insert the amount to be deposited : "))
-    if amount <= 0:
-        print("INVALID AMOUNT !")
-        return 0
+def spin_row(symbols):
+    row = []
+    for x in range(3):
+        row.append(random.choice(symbols))
+    print_row(row)
+    multiplier = 0
+    if row[0] == row[1] == row[2]:
+        if row[0] == "💕":
+            multiplier = 2
+            return get_payout(multiplier)
+        elif row[0] == "😘":
+            multiplier = 3
+            return get_payout(multiplier)
+        elif row[0] == "👌":
+            multiplier = 4
+            return get_payout(multiplier)
+        elif row[0] == "💖":
+            multiplier = 5
+            return get_payout(multiplier)
+        else:
+            print("JACKPOT")
+            multiplier = 10
+            return get_payout(multiplier)
     else:
-        #balance += amount
-        print(f"${amount:.2f} have been successfully added to your bank account ! ")
-        return amount
+        multiplier = 0
+        return get_payout(multiplier)
 
-def withdraw(balance):
-    amount = float(input("Insert the amount to be withdrawn : "))
-    if amount < 0:
-        print("INVALID AMOUNT !")
-        return 0
-    elif amount == 0:
-        print("You cannot withdraw $0 please try again !")
-        return 0
-    elif amount > balance:
-        print("Insufficient funds !")
-        return 0
-    else:
-        return amount
 
+def print_row(row):
+    for symbol in row:
+        print(symbol, end=" ")
+    print()
+
+def get_payout(multiplier):
+    return multiplier
 
 def main():
-    # we gotta have several options (withdraw, deposit, show balance)
-    balance = 0
-    print("******************************")
-    print("******* BAKING PROGRAM *******")
-    print("******************************")
-    banking = True
-    while banking:
-        choice = input("1.Show balance \n2.Deposit \n3.Withdraw \n4.EXIT \n")
-        match choice:
-            case "1":
-                show_balance(balance)
-            case "2":
-                balance += deposit(balance)
-            case "3":
-                balance -= withdraw(balance)
-            case "4":
-                print("Thank you for using the banking program. Good Bye !")
-                banking = False
-            case _:
-                print("INVALID CHOICE")
-
-
+    balance = 100
+    playing = True
+    print("**********************")
+    print("*****SLOT MACHINE*****")
+    print("   💕  😘  👌  💖  🤩")
+    print("**********************")
+    symbols = ["💕", "😘", "👌", "💖", "🤩"]
+    while playing:
+        bet = int(input("Place your bet : "))
+        if bet > balance:
+            print("INSUFFICIENT FUNDS !")
+        elif bet < 0:
+            print("INVALID INPUT")
+        elif balance == 0:
+            playing = False
+        else:
+            balance -= bet
+            bet *= spin_row(symbols)
+            balance += bet
+            print(f"Your balance is ${balance}")
+            if balance == 0:
+                print("You don't have any money left GAME OVER !")
+                break
+            continue
+    print("Thank You For Playing !")
 
 
 if __name__ == '__main__':
