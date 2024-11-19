@@ -2,7 +2,9 @@
 
 import random
 
-words = ("banana", "orange", "apple", "pineapple", "kiwi", "pear", "watermelon", "passion") # should import more words !
+words = ("banana", "orange", "apple", "pineapple", "kiwi", "pear", "watermelon", "passion"
+         ,"world","affair","beneath","inspire","beautiful","butterfly","insect","coconut","peanut",
+         "stomach","wizard","gigantic","satisfy","admire","earth","perfect","ambition","success") # should import more words !
 
 hangman_art = {0:("   ",
                   "   ",
