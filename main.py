@@ -1,70 +1,81 @@
-# SLOTS GAME
+#Hangman game
+
 import random
 
+words = ("banana", "orange", "apple", "pineapple", "kiwi", "pear", "watermelon", "passion") # should import more words !
 
-def spin_row(symbols):
-    row = []
-    for x in range(3):
-        row.append(random.choice(symbols))
-    print_row(row)
-    multiplier = 0
-    if row[0] == row[1] == row[2]:
-        if row[0] == "💕":
-            multiplier = 2
-            return get_payout(multiplier)
-        elif row[0] == "😘":
-            multiplier = 3
-            return get_payout(multiplier)
-        elif row[0] == "👌":
-            multiplier = 4
-            return get_payout(multiplier)
-        elif row[0] == "💖":
-            multiplier = 5
-            return get_payout(multiplier)
-        else:
-            print("JACKPOT")
-            multiplier = 10
-            return get_payout(multiplier)
-    else:
-        multiplier = 0
-        return get_payout(multiplier)
+hangman_art = {0:("   ",
+                  "   ",
+                  "   ",),
+             1:(  " o ",
+                  "   ",
+                  "   "),
+             2:(  " o ",
+                  " | ",
+                  "   "),
+             3:(  " o ",
+                  "/| ",
+                  "   "),
+             4:(  " o ",
+                  "/|\\",
+                  "   "),
+             5:(  " o ",
+                  "/|\\",
+                  "/  "),
+             6:(  " o ",
+                  "/|\\",
+                  "/ \\")}
 
 
-def print_row(row):
-    for symbol in row:
-        print(symbol, end=" ")
-    print()
+def display_hangman(wrong_guesses):
+    for line in hangman_art[wrong_guesses]:
+        print(line)
 
-def get_payout(multiplier):
-    return multiplier
+def display_hint(hint):
+    print(" ".join(hint))
+
+def display_answer(answer):
+    print(" ".join(answer))
 
 def main():
-    balance = 100
-    playing = True
-    print("**********************")
-    print("*****SLOT MACHINE*****")
-    print("   💕  😘  👌  💖  🤩")
-    print("**********************")
-    symbols = ["💕", "😘", "👌", "💖", "🤩"]
-    while playing:
-        bet = int(input("Place your bet : "))
-        if bet > balance:
-            print("INSUFFICIENT FUNDS !")
-        elif bet < 0:
-            print("INVALID INPUT")
-        elif balance == 0:
-            playing = False
-        else:
-            balance -= bet
-            bet *= spin_row(symbols)
-            balance += bet
-            print(f"Your balance is ${balance}")
-            if balance == 0:
-                print("You don't have any money left GAME OVER !")
-                break
-            continue
-    print("Thank You For Playing !")
+    answer = random.choice(words)
+    hint = ["_"] * len(answer)
+    wrong_guesses = 0
+    is_running = True
+    guessed_letters = set()
 
+    while is_running:
+        display_hangman(wrong_guesses)
+        display_hint(hint)
+        guess = input("Enter a letter : ").lower()
+
+        if len(guess) != 1 or not guess.isalpha():
+            print("INVALID INPUT")
+            continue
+
+        if guess in guessed_letters:
+            print(f"your guess {guess} is already guessed")
+            continue
+
+        guessed_letters.add(guess)
+
+        if guess in answer:
+            for i in range (len(answer)):
+                if answer[i] == guess:
+                    hint[i] = guess
+        else:
+            wrong_guesses += 1
+
+        if "_" not in hint:
+            display_hangman(wrong_guesses)
+            display_answer(answer)
+            print("YOU WIN !")
+            is_running = False
+        elif wrong_guesses >= len(hangman_art) - 1:
+            display_hangman(wrong_guesses)
+            display_answer(answer)
+            print("YOU LOSE")
+            is_running = False
 
 if __name__ == '__main__':
     main()
