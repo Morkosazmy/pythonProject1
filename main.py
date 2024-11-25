@@ -1,6 +1,8 @@
-#P.O.O.P 3.
+#P.O.O.P 4.
+#Multi level inheritance
+#multiple inheritance
 import Animal
-
+#from Animal import rabbit
 
 dog1 = Animal.Dog("Roy")
 dog2 = Animal.Dog("Lulu")
@@ -47,10 +49,19 @@ mouse1.talk()
 
 
 
+rabbit1 = Animal.Rabbit("bugs")
+rabbit1.flee()
 
+hawk1 = Animal.Hawk("Tony")
+hawk1.hunt()
 
+fish1 = Animal.Fish("Neemo")
+fish1.hunt()
+fish1.flee()
 
+fish1.eat()
 
+hawk1.hunt()
 
 
 

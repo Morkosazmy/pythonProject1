@@ -33,3 +33,35 @@ class Mouse(Animal):
     def talk(self):
         print("SQUEAK !!!")
 
+
+
+
+
+class animal:
+    def __init__(self, name):
+        self.name = name
+    def eat(self):
+        print(f"{self.name} is eating")
+    def sleep(self):
+        print(f"{self.name} is sleeping")
+
+
+
+class prey(animal):
+    def flee(self):
+        print(f"{self.name} is fleeing !")
+
+class predator(animal):
+    def hunt(self):
+        print(f"{self.name} is hunting !")
+
+
+class Rabbit(prey):
+    pass
+
+class Hawk(predator):
+    pass
+
+class Fish(prey, predator):
+    pass
+
