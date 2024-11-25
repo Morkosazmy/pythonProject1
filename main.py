@@ -1,37 +1,30 @@
-#P.O.O.P 1.
-# import Car from car (car class)
+#P.O.O.P 2.
 
-class Car:
-    def __init__(self,model,year,color,for_sale):
-        self.model = model
-        self.year = year
-        self.color = color
-        self.for_sale = for_sale
-    def move_car(self):
-        print(f"You move the {self.color} {self.year} {self.model}")
-    def stop_car(self):
-        print(f"You stop the {self.color} {self.year} {self.model}")
-    def set_for_sale(self,for_sale_new):
-        self.for_sale = for_sale_new
-        print(f"For sale status : {self.for_sale}")
-    def describe_car(self):
-        print(f"{self.color} {self.year} {self.model}")
+class Student:
+    graduation_year = 2026
+    num_students = 0
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+        Student.num_students += 1
+print(Student.num_students)
+student1 = Student("Spongebob", 31)
+print(Student.num_students)
+student2 = Student("Patrick", 32)
+student3 = Student("Squidward", 36)
+student4 = Student("Sandy", 18)
+print(student1.name, end=" ")
+print(student1.age)
+print(student2.name, end=" ")
+print(student2.age)
 
-car1 = Car("Honda Civic", "2016", "Red", True)
-car2 = Car("Mustang","2020","Yellow",False)
-car3 = Car("Hellcat","2021","Black", True)
-car4 = Car("Mercedes benz", "2024", "Black", True)
+print(student1.graduation_year)
+print(student2.graduation_year)
+print(Student.graduation_year) # it is better to access this type of variable with the class's name itself instead of accessing it through instances like student1 or student2 as they are global!
 
-
-
-"""
-print(car4.model)
-print(car4.year)
-print(car4.color)
-print(car4.for_sale)
-
-car4.set_for_sale(False)
-print()
-
-car4.describe_car()
-"""
+print(Student.num_students)
+print(f"My Graduation class {Student.graduation_year} has {Student.num_students} students : ")
+print(student1.name)
+print(student2.name)
+print(student3.name)
+print(student4.name)
