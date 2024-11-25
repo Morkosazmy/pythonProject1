@@ -1,5 +1,74 @@
-#P.O.O.P 2.
+#P.O.O.P 3.
+import Animal
 
+
+dog1 = Animal.Dog("Roy")
+dog2 = Animal.Dog("Lulu")
+cat1 = Animal.Cat("Johara")
+cat2 = Animal.Cat("Cheetos")
+mouse1 = Animal.Mouse("Minnie")
+
+#dog3 = Dog("gog", True)
+
+print(cat1.name)
+print(cat1.is_alive)
+cat1.eat()
+cat1.sleep()
+cat1.meow()
+cat2.talk()
+
+print()
+print(cat2.name)
+print(cat2.is_alive)
+
+cat2.eat()
+cat2.sleep()
+cat2.meow()
+cat2.talk()
+
+print()
+print(dog1.name)
+print(dog1.is_alive)
+
+dog1.eat()
+dog1.sleep()
+dog1.bark()
+dog1.talk()
+
+print()
+print(mouse1.name)
+print(mouse1.is_alive)
+
+mouse1.eat()
+mouse1.sleep()
+mouse1.squeak()
+mouse1.talk()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
 class Student:
     graduation_year = 2026
     num_students = 0
@@ -28,3 +97,4 @@ print(student1.name)
 print(student2.name)
 print(student3.name)
 print(student4.name)
+"""
