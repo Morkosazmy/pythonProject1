@@ -1,19 +1,14 @@
 from http.client import CannotSendRequest
 
-from Vehicle import Car, Boat, Motorcycle
+import Shapes
+from Shapes import Circle, Square, Triangle, Rectangle
 
-#vehicle = Vehicle()
-#vehicle.go()
-#vehicle.stop()
+circle = Circle("Red", True, 5)
+square = Square("Blue", True, 4)
+triangle = Triangle("Violet", False, 6, 5)
+rectangle = Rectangle("Green",True,3,4)
 
-car1 = Car()
-car1.go()
-car1.stop()
-
-boat1 = Boat()
-boat1.go()
-boat1.stop()
-
-motorcycle1 = Motorcycle()
-motorcycle1.go()
-motorcycle1.stop()
+circle.describe()
+square.describe()
+triangle.describe()
+rectangle.describe()
