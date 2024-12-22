@@ -1,33 +1,23 @@
-#Aggregation
-class Library:
-    def __init__(self, name):
-        self.name = name
-        self.books = []
-    def add_book(self,book):
-        self.books.append(book)
+#COMPOSITION
 
-    def list_books(self):
-        return [f"{book.title} by {book.author}" for book in self.books ]
+class Engine:
+    def __init__(self,hp):
+        self.hp = hp
 
-class Book:
-    def __init__(self, title, author):
-        self.title = title
-        self.author = author
+class Wheel:
+    def __init__(self,size):
+        self.size = size
 
-# We created a class for book and a library class as well
-# we need to create some books and print them.
-library = Library("NY Library")
-
-book1 = Book("Harry Potter", "J.K. Rowling")
-book2 = Book("The Hobbit", "J. R. R. Tolkein")
-book3 = Book("The Color Of Magic", "Terry Pratchet")
-
-library.add_book(book1)
-library.add_book(book2)
-library.add_book(book3)
-
-print(library.name)
-print(library.list_books())
-
-for book in library.books:
-    print(f"Book's name : {book.title} , Book's Author : {book.author}")
+class Car:
+    def __init__(self, make, model, year, horse_power, wheel_size):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.engine = Engine(horse_power)
+        self.wheels = [Wheel(wheel_size) for wheel in range(4)]
+    def display_car(self):
+        return f"{self.year} {self.make} {self.model} : {self.engine.hp}(hp) - {self.wheels[0].size}in"
+car1 = Car(make="Ford", model="Mustang",year="2024",horse_power=455, wheel_size=18)
+car2 = Car(make="Mercedes_Benz", model="S class", year="2025", horse_power=500, wheel_size=20)
+print(car1.display_car())
+print(car2.display_car())
