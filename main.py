@@ -1,23 +1,54 @@
-#COMPOSITION
+#Nested Classes
 
-class Engine:
-    def __init__(self,hp):
-        self.hp = hp
+class Company:
+    class Employee:
+        def __init__(self, name, position):
+            self.name = name
+            self.position = position
 
-class Wheel:
-    def __init__(self,size):
-        self.size = size
+        def get_details(self):
+            return f"{self.name} : {self.position}"
 
-class Car:
-    def __init__(self, make, model, year, horse_power, wheel_size):
-        self.make = make
-        self.model = model
-        self.year = year
-        self.engine = Engine(horse_power)
-        self.wheels = [Wheel(wheel_size) for wheel in range(4)]
-    def display_car(self):
-        return f"{self.year} {self.make} {self.model} : {self.engine.hp}(hp) - {self.wheels[0].size}in"
-car1 = Car(make="Ford", model="Mustang",year="2024",horse_power=455, wheel_size=18)
-car2 = Car(make="Mercedes_Benz", model="S class", year="2025", horse_power=500, wheel_size=20)
-print(car1.display_car())
-print(car2.display_car())
+    def __init__(self, company_name):
+        self.company_name = company_name
+        self.employees = []
+
+    def add_employee(self, name, position):
+        new_employee = self.Employee(name, position)
+        self.employees.append(new_employee)
+
+
+    def list_employees(self):
+        return [employee.get_details() for employee in self.employees]
+
+
+
+class None_profit:
+    class Employee:
+        pass
+    pass
+
+
+company1 = Company("Goodman and co.")
+company1.add_employee("Mark", "CEO")
+company1.add_employee("Mars", "Manager")
+company1.add_employee("Spongebob","Cook")
+company1.add_employee("Squidward","Cashier")
+print(company1.list_employees())
+
+
+company2 = Company("Chumbucket")
+company2.add_employee("Sheldon", "Manager")
+company2.add_employee("Computer", "Assistant")
+
+
+#1
+for employee in company1.list_employees():
+    print(employee)
+
+print()
+#2
+for employee in company2.employees:
+    print(employee.get_details())
+
+# Both 1 and 2 will do the same thing !
