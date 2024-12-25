@@ -1,23 +1,18 @@
-#Lambda functions
+#map(function, collection)
 
-double = lambda x: x * 2
-add = lambda x, y: x + y
-max_value = lambda x, y: x if x > y else y
-min_value = lambda x, y: x if x < y else y
-is_even = lambda x: x % 2 == 0
-full_name = lambda first_name, last_name: first_name + " " + last_name
-#age_check = lambda x: f"{x} is over 18" if x >= 18 else "under age, ACCESS DENIED"
-age_check = lambda x: True if x >= 18 else False
+def c_to_f(temp):
+    return (temp * 9/5) + 32
 
-print(double(3))
-print(double(4))
-print()
+celsius_temps = [0.0, 32.0, 18.0, 55.0, 45.0, -8.0, -60.0, 100.0]
 
-print(add(3,2))
-print(max_value(1,85))
-print(min_value(1,85))
-print(is_even(5))
-print(is_even(100))
-print(full_name("Mark", "Zuckerberg"))
-print(age_check(5))
-print(age_check(23))
+fahrenheit_temps = list(map(c_to_f, celsius_temps))
+
+fahrenheit_temps2 = list(map(lambda temp: (temp * 9/5) + 32, celsius_temps))
+
+print(celsius_temps) # Prints a list of temps in Celsius
+
+print(fahrenheit_temps) # Prints a list of temps in fahrenheit
+
+for temp in fahrenheit_temps2:
+    print(temp)
+#Prints a temperature for each line
