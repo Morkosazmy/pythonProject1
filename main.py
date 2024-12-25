@@ -1,62 +1,58 @@
-#Magic Methods
-#add, less than, greater than, equals, string, contains, get item
+#@Property ( getter "@property", setter "@x.setter", deleter "@x.deleter" )
+from pprint import pprint
+from shutil import which
 
 
-class Book:
-    def __init__(self, title, author, num_pages):
-        self.title = title
-        self.author = author
-        self.num_pages = num_pages
-    #String
-    def __str__(self):
-        return f"'{self.title}' by {self.author} : {self.num_pages} pages."
-    #<
-    def __lt__(self, other):
-        return self.num_pages < other.num_pages
-    #==
-    def __eq__(self, other):
-        return self.title == other.title and self.author == other.author
-    #>
-    def __gt__(self, other):
-        return self.num_pages > other.num_pages
-    #+
-    def __add__(self, other):
-        return self.num_pages + other.num_pages
+class Rectangle:
+    def __init__(self, width, height):
+        self._width = width
+        self._height = height
+        # the ' _ ' refers to the attributes are protected and shall only be used within the class itself
 
-    # in
-    def __contains__(self, keyword):
-        return keyword in self.title or keyword in self.author
-    #getter
-    def __getitem__(self, key):
-        if key == "title":
-            return self.title
-        elif key == "author":
-            return self.author
-        elif key == "num_pages":
-            return self.num_pages
+    @property
+    def width(self):
+        return f"{self._width:.1f} cm"
+
+    @property
+    def height(self):
+        return f"{self._height:.1f} cm"
+
+    @width.setter
+    def width(self, new_width):
+        if new_width > 0:
+            self._width = new_width
         else:
-            return f"'{key}' NOT FOUND!"
+            print("Width must be greater then zero !")
 
+    @height.setter
+    def height(self, new_height):
+        if new_height > 0:
+            self._height = new_height
+        else:
+            print("Height must be greater than zero")
 
+    @width.deleter
+    def width(self):
+        del self._width
+        print("Width has been deleted")
 
-book1 = Book("Harry Potter and the philosopher's stone", "J.K Rowling", 213)
-book2 = Book("Harry potter and the chamber of secrets","J.K Rowling", 320)
-book3 = Book("The Hobbit", "J.R.R Tolkein", 280)
-book4 = Book("Harry Potter and the philosopher's stone", "J.K Rowling", 213)
+    @height.deleter
+    def height(self):
+        del self._height
+        print("Height has been deleted")
 
-print(book1) #str
-print(book2) #str
-print(book3) #str
-print(book4) #str
+rectangle = Rectangle(3, 4)
 
-print(book1 == book4) #eq
-print(book1 == book2) #eq
-print(book1 < book3) #lt
-print(book1 > book3) #gt
-print(book1) #str
-print("Harry" in book1) #contains
-print(book2 + book3) #add
-print(book1['title'])
-print(book1['author'])
-print(book1['num_pages'])
-print(book1['hooligans'])
+print(rectangle.width)
+print(rectangle.height)
+
+rectangle.width = 5
+rectangle.height = 6
+
+pprint('')
+
+print(rectangle.width)
+print(rectangle.height)
+
+del rectangle.width
+del rectangle.height
