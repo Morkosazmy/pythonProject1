@@ -1,116 +1,87 @@
-# .sort() or sorted() (Sorting lists, tuples, dictionaries and objects)
+# Recursion
 
-#list
+#iterative (for loop)
+#def walk(steps):
+#    for x in range(1, steps+1):
+#        print(f"You took a step #{x}")
+#walk(20)
 
-fruits = ["banana", "orange", "apple", "coconut", "pineapple"]
+#recusrive
 
-fruits.sort()
-print(fruits)
-fruits.sort(reverse=True)
-print(fruits)
-
-#tuple
-fruits2 = ("banana", "orange", "apple", "coconut", "pineapple")
-
-fruits2 = sorted(fruits2)
-
-print(fruits2)
-
-fruits2 = list(fruits2)
-
-print(fruits2)
-fruits2.sort(reverse=True)
-print(fruits2)
-
-print()
-print()
-#dictionary
-fruit_cal = {"banana" : 120, "apple" : 160, "pineapple" : 250, "coconut" : 340, "orange" : 80}
-#1
-#sort by name and don't show values of calories.
-print()
-fruit_cal = sorted(fruit_cal)
-print(fruit_cal)
-
-#2
-#sort by name in reverse and don't show values of calories.
-print()
-fruit_cal = sorted(fruit_cal, reverse=True)
-print(fruit_cal)
-
-#3
-# Sorted by names while showing the whole item (name, value "calories" )
-print()
-fruit_cal = {"banana" : 120, "apple" : 160, "pineapple" : 250, "coconut" : 340, "orange" : 80}
-fruit_cal = dict(sorted(fruit_cal.items()))
-print(fruit_cal)
-
-#4
-# Sorted by names while showing the whole item (name, value "calories" ) in reverse order of names
-print()
-fruit_cal = {"banana" : 120, "apple" : 160, "pineapple" : 250, "coconut" : 340, "orange" : 80}
-fruit_cal = dict(sorted(fruit_cal.items(), reverse= True))
-print(fruit_cal)
-
-#5
-#Sort by calories ( value ) in ascending order
-print()
-fruit_cal = {"banana" : 120, "apple" : 160, "pineapple" : 250, "coconut" : 340, "orange" : 80}
-fruit_cal = dict(sorted(fruit_cal.items(),key= lambda item: item[1]))
-print(fruit_cal)
-
-#6
-#Sort by calories ( value ) in descending order
-print()
-fruit_cal = {"banana" : 120, "apple" : 160, "pineapple" : 250, "coconut" : 340, "orange" : 80}
-fruit_cal = dict(sorted(fruit_cal.items(),key= lambda item: item[1], reverse= True))
-print(fruit_cal)
-print()
-print()
-# sorting objects !
-class Fruit:
-    def __init__(self, name, calories):
-        self.name = name
-        self.calories = calories
-
-    def __repr__(self):
-        return f"{self.name} : {self.calories}"
-
-print()
-fruit_objs = [Fruit("banana", 105),
-              Fruit("orange", 73),
-              Fruit("apple", 72),
-              Fruit("coconut", 354)]
-
-fruit_objs = sorted(fruit_objs, key = lambda fruit: fruit.name)
-print(fruit_objs)
+def walk(steps):
+    if steps <= 0:
+        return
+    walk(steps - 1)
+    print(f"You took a step {steps} !")
 
 
-print()
-fruit_objs = [Fruit("banana", 105),
-              Fruit("orange", 73),
-              Fruit("apple", 72),
-              Fruit("coconut", 354)]
+walk(5)
+"""
+#FACTORIAL NUMBER
+def factorial(n):
+    if n <= 0:
+        return fact
+    fact = n * n-1
+    factorial(n-1)
 
-fruit_objs = sorted(fruit_objs, key = lambda fruit: fruit.name, reverse= True)
-print(fruit_objs)
+print(factorial(3))
+
+"""
+sum = 0
+def factorial(n):
+    if n == 1:
+        return 1
+    elif n < 0:
+        print("Cant calculate factorial of a negative number !")
+    elif n == 0:
+        return 0
+    else:
+        x = n * (n-1)
+        sum = x
+        factorial(n-1)
+    return sum
+print(factorial(5))
 
 
-print()
-fruit_objs = [Fruit("banana", 105),
-              Fruit("orange", 73),
-              Fruit("apple", 72),
-              Fruit("coconut", 354)]
+# factorial function iteratively !
+def factorial_iterative(n):
+    factorial = 1
+    if n == 1 or n == 0:
+        return 1
+    elif n < 0:
+        print("ERROR: cant have a negative value")
+    else:
+        while n > 1:
+            factorial *= n
+            n -= 1
+            print(f"n = {n} and factorial = {factorial}")
+            print()
+        return factorial
 
-fruit_objs = sorted(fruit_objs, key = lambda fruit: fruit.calories)
-print(fruit_objs)
+print(factorial_iterative(5))
+
+#Recursive way !
+def factorial_recursive(n):
+    if n == 1 or n == 0:
+        return 1
+    elif n < 0:
+        print("ERROR: cant have a negative value")
+    else:
+        return n * factorial_recursive(n-1)
+
+print(factorial_recursive(5))
 
 
-print()
-fruit_objs = [Fruit("banana", 105),
-              Fruit("orange", 73),
-              Fruit("apple", 72),
-              Fruit("coconut", 354)]
 
-fruit_objs = sorted(fruit_objs, key = lambda fruit: fruit.calories, reverse= True)
-print(fruit_objs)
+# 2nd attempt for recursive :
+
+def recursive_factorial(x):
+    if x == 0 or x == 1:
+        return 1
+    elif x < 0:
+        print("Error ! (negative value entered)")
+        return 0
+    else:
+        return x * recursive_factorial(x-1)
+
+print(recursive_factorial(5))
