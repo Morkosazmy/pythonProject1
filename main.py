@@ -1,23 +1,43 @@
-# Exception handling ( try, except, finally )
-# try ( try some code )
-# except (
-# ZeroDivisionError ( divide by zero )
-# ValueError ( enter a string in an int input )
-# TypeError (
-inter = "3"
-try:
-    number = int(input("Enter a number "))
-    print(1 / number)
-#    print(1 / inter)
-except ZeroDivisionError:
-    print("Cant divide by zero !")
-except ValueError:
-    print("Cant divide by a string !")
-except TypeError:
-    print("inter must be an integer/double and not a string !")
+#File detection
 
-except Exception:
-    print("Something went wrong")
+import os
 
-finally:
-    print("we are done here ! ")
+#direct connection:
+file_path = "test.txt"
+
+#indirect connection:
+file_path2 = "C:/Users/morko/PycharmProjects/pythonProject/.venv/test.txt"
+file_path3 = "C:/Users/morko/PycharmProjects/pythonProject/test.txt"
+file_path1 = "C:/Users/morko/OneDrive/Bureau/New Document texte (11).txt"
+path_dir = "C:/Users/morko/OneDrive/Bureau/Corrigé proba alternance"
+if os.path.exists(file_path2):
+    print(f"found the '{file_path2}' file")
+else:
+    print("file not found")
+
+if os.path.exists(file_path):
+    print(f"found the '{file_path}' file")
+else:
+    print("file not found")
+
+if os.path.exists(file_path3):
+    print(f"found the '{file_path3}' file")
+else:
+    print("file not found")
+
+if os.path.exists(file_path1):
+    print(f"found the '{file_path1}' file")
+else:
+    print("file not found")
+
+if os.path.exists(file_path1):
+    print(f"found the '{file_path1}' file")
+else:
+    print("file not found")
+
+if os.path.isfile(path_dir):
+    print(f"found the '{path_dir}' file")
+elif os.path.isdir(path_dir): #no extension (ex: .txt .pdf etc...)
+    print(f"found the '{path_dir}' directory")
+else:
+    print("File/Directory not found")
