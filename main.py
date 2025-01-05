@@ -1,14 +1,27 @@
-#Execution Time
+#Date And Time
 
-import time
+import datetime
+from time import strftime
 
-start_time = time.perf_counter()
+date = datetime.date(2025, 1, 7)
+day = datetime.date.today()
 
-for i in range(100000000):
-    pass
+time = datetime.time(22, 12, 00)
+now = datetime.datetime.now()
 
-end_time = time.perf_counter()
+now2 = now.strftime("%H:%M:%S / %d-%m-%Y")
 
-elapsed_time = end_time - start_time #the difference in time is the time it took to execute
+target_datetime = datetime.datetime(2025, 1, 7, 00, 00, 1)
 
-print(f"elapsed time is :{elapsed_time:.3f} seconds")
+current_datetime = datetime.datetime.now()
+
+print(date)
+print(day)
+print(time)
+print(now)
+print(now2)
+
+if target_datetime < current_datetime:
+    print("Target date time has passed")
+else:
+    print("Target date time has NOT passed")
