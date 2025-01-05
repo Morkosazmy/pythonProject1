@@ -69,7 +69,7 @@ except FileExistsError:
 """
 
 import csv
-
+"""
 file_path = "C:/Users/morko/OneDrive/Bureau/ING INFO/python_tesst.csv"
 employees = [["name", "age", "job"],
              ["Spongebob", 30, "cook"],
@@ -84,3 +84,41 @@ try:
         print(f"The CSV file '{file_path}' was created ")
 except FileExistsError:
     print("The file exists already ")
+"""
+
+file_path = "C:/Users/morko/OneDrive/Bureau/python_test.txt"
+file_path1 = "C:/Users/morko/OneDrive/Bureau/python_test.json"
+file_path2 = "C:/Users/morko/OneDrive/Bureau/ING INFO/python_test.csv"
+
+print()
+
+try:
+    with open(file_path, "r") as file:
+        content = file.read()
+        print(content)
+except PermissionError:
+    print("You don't have permission to read that file")
+except FileExistsError:
+    print("file was not found")
+
+try:
+    with open(file_path1, "r") as file:
+        content = json.load(file)
+        print(content["name"], content["age"])
+except PermissionError:
+    print("You don't have permission to read that file")
+except FileExistsError:
+    print("file was not found")
+print()
+try:
+    content = []
+    with open(file_path2, "r") as file:
+        content = csv.reader(file)
+        for line in content:
+            print(line[0], line[2], line[1])
+except FileExistsError:
+    print("File not found")
+except PermissionError:
+    print("Permission denied")
+
+
