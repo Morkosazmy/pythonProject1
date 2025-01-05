@@ -85,6 +85,7 @@ try:
 except FileExistsError:
     print("The file exists already ")
 """
+# reading files (csv, json, txt)
 
 file_path = "C:/Users/morko/OneDrive/Bureau/python_test.txt"
 file_path1 = "C:/Users/morko/OneDrive/Bureau/python_test.json"
