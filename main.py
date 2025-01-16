@@ -1,53 +1,27 @@
-#Multithreading
+#API Calling ( use " pip install requests " to install requests and be able to import, else it would give a NOTFOUND Error
 
-import threading
-import time
+import requests
+
+base_url = "https://pokeapi.co/api/v2/"
+
+def get_pokemon_info(name):
+    url = f"{base_url}/pokemon/{name}"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+#       print("Data retrieved !")
+        pokemon_data = response.json()
+        return pokemon_data
+
+    else:
+        print(f"Error N°{response.status_code}, Couldn't retrieve data")
 
 
-def take_out_trash():
-    print("You are taking out the trash")
-    time.sleep(10)
-    print("You took out the trash")
+pokemon_name = "pikachu"
+pokemon_info = get_pokemon_info(pokemon_name)
 
-def do_laundry():
-    print("You are doing the laundry")
-    time.sleep(10)
-    print("You did the laundry")
-
-def wash_dishes():
-    print("You are washing the dishes")
-    time.sleep(4)
-    print("You washed the dishes")
-
-def get_mail():
-    print("You are getting the mail")
-    time.sleep(6)
-    print("You got the mail")
-
-def walk_dog(first_name, last_name):
-    print(f"You are walking the dog {first_name} {last_name}")
-    time.sleep(1)
-    print(f"You walked the dog {first_name} {last_name}")
-
-chore1 = threading.Thread(target=take_out_trash)
-chore1.start()
-
-chore2 = threading.Thread(target=do_laundry)
-chore2.start()
-
-chore3 = threading.Thread(target=wash_dishes)
-chore3.start()
-
-chore4 = threading.Thread(target=get_mail)
-chore4.start()
-
-chore5 = threading.Thread(target=walk_dog, args=("scooby","doo"))
-chore5.start()
-
-chore1.join()
-chore2.join()
-chore3.join()
-chore4.join()
-chore5.join()
-
-print("All chores are finished")
+if pokemon_info:
+    print(f"name: {pokemon_info["name"].capitalize()}")
+    print(f"id: {pokemon_info["id"]}")
+    print(f"height: {pokemon_info["height"]} cm")
+    print(f"weight: {pokemon_info["weight"]} kg")
