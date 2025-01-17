@@ -1,27 +1,22 @@
-#API Calling ( use " pip install requests " to install requests and be able to import, else it would give a NOTFOUND Error
+#GUI (1 of 7) PyQt5
 
-import requests
+import sys
+from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtGui import QIcon
 
-base_url = "https://pokeapi.co/api/v2/"
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("First GUI app")
+        self.setGeometry(750, 350, 500, 500)
+        self.setWindowIcon(QIcon("C:/Users/morko/Downloads/randomPhoto.JPG"))
 
-def get_pokemon_info(name):
-    url = f"{base_url}/pokemon/{name}"
-    response = requests.get(url)
-
-    if response.status_code == 200:
-#       print("Data retrieved !")
-        pokemon_data = response.json()
-        return pokemon_data
-
-    else:
-        print(f"Error N°{response.status_code}, Couldn't retrieve data")
+def main():
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec_())
 
 
-pokemon_name = "pikachu"
-pokemon_info = get_pokemon_info(pokemon_name)
-
-if pokemon_info:
-    print(f"name: {pokemon_info["name"].capitalize()}")
-    print(f"id: {pokemon_info["id"]}")
-    print(f"height: {pokemon_info["height"]} cm")
-    print(f"weight: {pokemon_info["weight"]} kg")
+if __name__ == "__main__":
+    main()
