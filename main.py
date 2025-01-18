@@ -1,10 +1,10 @@
-#GUI (4 of 9) PyQt5 QLabels
+#GUI (5 of 9) PyQt5 Buttons
 
 import sys
 from tkinter import Widget
 
 from PyQt5.QtWidgets import (QMainWindow, QApplication, QLabel, QWidget, QBoxLayout, QHBoxLayout, QGridLayout,
-                             QVBoxLayout)
+                             QVBoxLayout, QPushButton)
 from PyQt5.QtGui import QIcon, QFont, QPixmap
 from PyQt5.QtCore import Qt
 
@@ -14,10 +14,31 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("First GUI app")
         self.setGeometry(750, 350, 500, 500)
+        self.button = QPushButton("Click Here !", self)
         self.setWindowIcon(QIcon("C:/Users/morko/Downloads/randomPhoto.JPG"))
+        self.label5 = QLabel("Hello", self)
         self.initUI()
 
     def initUI(self):
+        self.button.setGeometry(150, 200, 200, 100)
+        self.button.setStyleSheet("font-size: 28px;")
+        self.button.clicked.connect(self.on_click)
+        self.label5.setGeometry(150, 300, 200, 100)
+        self.label5.setStyleSheet("font-size: 50px;")
+
+
+
+    def on_click(self):
+        print("Button clicked !")
+        self.button.setText("clicked")
+        self.button.setDisabled(True)
+        self.label5.setText("Goodbye")
+
+
+
+
+
+"""
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
 
@@ -48,7 +69,7 @@ class MainWindow(QMainWindow):
         grid.addWidget(label5, 1, 2)
 
         central_widget.setLayout(grid)
-
+"""
 """
         vbox= QVBoxLayout()
 
