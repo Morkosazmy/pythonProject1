@@ -1,11 +1,9 @@
-#GUI (8 of 9) PyQt5 Line edit widgets
+#GUI (8 of 9) PyQt5 Adding CSS properties
 
 import sys
-#from tkinter import Widget
 
 from PyQt5.QtWidgets import (QMainWindow, QApplication, QLabel, QWidget, QBoxLayout, QHBoxLayout, QGridLayout,
                              QVBoxLayout, QPushButton, QCheckBox, QRadioButton, QButtonGroup, QLineEdit)
-
 from PyQt5.QtGui import QIcon, QFont, QPixmap
 from PyQt5.QtCore import Qt
 
@@ -14,12 +12,17 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.line_edit = QLineEdit(self)
-        self.button_line_edit = QPushButton("Submit", self)
+        #self.line_edit = QLineEdit(self)
+        #self.button_line_edit = QPushButton("Submit", self)
+
+        self.button1 = QPushButton("#1", self)
+        self.button2 = QPushButton("#2", self)
+        self.button3 = QPushButton("#3", self)
+
 
 
         #self.setWindowTitle("First GUI app")
-        self.setGeometry(750, 350, 500, 500)
+        #self.setGeometry(750, 350, 500, 500)
         #self.radio1 =  QRadioButton("Visa", self)
         #self.radio2 =  QRadioButton("Master Card", self)
         #self.radio3 =  QRadioButton("Paypal", self)
@@ -37,21 +40,64 @@ class MainWindow(QMainWindow):
         self.initUI()
 
     def initUI(self):
-        self.line_edit.setGeometry(10, 10, 200, 40)
-        self.line_edit.setStyleSheet("font-size: 20px;"
-                                     "font-family: Arial;")
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+        hbox = QHBoxLayout(self)
+        hbox.addWidget(self.button1)
+        hbox.addWidget(self.button2)
+        hbox.addWidget(self.button3)
+        central_widget.setLayout(hbox)
 
-        self.button_line_edit.setGeometry(210, 10, 100, 40)
-        self.button_line_edit.setStyleSheet("font-size: 20px;"
-                                            "font-family: Arial;")
-        self.button_line_edit.clicked.connect(self.submit)
+        self.button1.setObjectName("button1")
+        self.button2.setObjectName("button2")
+        self.button3.setObjectName("button3")
 
-        self.line_edit.setPlaceholderText("Enter your name")
+        self.setStyleSheet("""
+            QPushButton{
+            font-size: 24px;
+            font-family: Arial;
+            padding: 15px 75px;
+            margin: 25px;
+            border: 2px solid;
+            border-radius: 15px;
+            }
+            QPushButton#button1{
+            background-color: red; 
+            }    
+            QPushButton#button2{
+            background-color: yellow;
+            }   
+            QPushButton#button3{
+            background-color: green;
+            }            
+            QPushButton#button3:hover{
+            background-color: hsl(122, 100%, 84%);
+            }   
+            QPushButton#button2:hover{
+            background-color: #aaa;
+            }   
+            QPushButton#button1:hover{
+            background-color: #ccc;
+            }
+        """)
+        # for colors we can use rgb(x,y,z) or #HEXCODE or even hsl(degree, percentage, percengtage) for saturation
+        # in lightness
 
-    def submit(self):
-        print("You clicked the submit button")
-        text = self.line_edit.text()
-        print(f"Hello {text}")
+        # self.line_edit.setGeometry(10, 10, 200, 40)
+        # self.line_edit.setStyleSheet("font-size: 20px;"
+        # "font-family: Arial;")
+
+        #self.button_line_edit.setGeometry(210, 10, 100, 40)
+        # self.button_line_edit.setStyleSheet("font-size: 20px;"
+        #                             "font-family: Arial;")
+        #self.button_line_edit.clicked.connect(self.submit)
+
+        #self.line_edit.setPlaceholderText("Enter your name")
+
+    #def submit(self):
+    #    print("You clicked the submit button")
+    #    text = self.line_edit.text()
+    #    print(f"Hello {text}")
         #self.checkbox.setStyleSheet("font-size: 20px;" "font-family: bold;")
         #self.checkbox.setGeometry(10, 0, 300, 100)
         #self.checkbox.setChecked(False)
