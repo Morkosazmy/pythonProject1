@@ -40,7 +40,7 @@ class MainWindow(QMainWindow):
         #if state == 2:
            print("You are a human being !")
         else:
-            print("You don't like food")
+            print("You are not a human being !")
 
 
 """
