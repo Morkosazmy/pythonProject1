@@ -1,10 +1,10 @@
-#GUI (5 of 9) PyQt5 Buttons
+#GUI (6 of 9) PyQt5 Checkboxes
 
 import sys
 from tkinter import Widget
 
 from PyQt5.QtWidgets import (QMainWindow, QApplication, QLabel, QWidget, QBoxLayout, QHBoxLayout, QGridLayout,
-                             QVBoxLayout, QPushButton)
+                             QVBoxLayout, QPushButton, QCheckBox)
 from PyQt5.QtGui import QIcon, QFont, QPixmap
 from PyQt5.QtCore import Qt
 
@@ -12,28 +12,44 @@ from PyQt5.QtCore import Qt
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("First GUI app")
+        #self.setWindowTitle("First GUI app")
         self.setGeometry(750, 350, 500, 500)
-        self.button = QPushButton("Click Here !", self)
-        self.setWindowIcon(QIcon("C:/Users/morko/Downloads/randomPhoto.JPG"))
-        self.label5 = QLabel("Hello", self)
+        self.checkbox = QCheckBox("Are you a human being ?", self)
+        #self.button = QPushButton("Click Here !", self)
+        #self.setWindowIcon(QIcon("C:/Users/morko/Downloads/randomPhoto.JPG"))
+        #self.label5 = QLabel("Hello", self)
         self.initUI()
 
     def initUI(self):
-        self.button.setGeometry(150, 200, 200, 100)
+        self.checkbox.setStyleSheet("font-size: 20px;" "font-family: bold;")
+        self.checkbox.setGeometry(10, 0, 300, 100)
+        self.checkbox.setChecked(False)
+        self.checkbox.stateChanged.connect(self.checkbox_changed)
+
+
+    """ self.button.setGeometry(150, 150, 300, 300)
         self.button.setStyleSheet("font-size: 28px;")
         self.button.clicked.connect(self.on_click)
         self.label5.setGeometry(150, 300, 200, 100)
         self.label5.setStyleSheet("font-size: 50px;")
+    """
+
+    def checkbox_changed(self, state):
+        print(state)
+        if state == Qt.Checked:
+        #if state == 2:
+           print("You are a human being !")
+        else:
+            print("You don't like food")
 
 
-
+"""
     def on_click(self):
         print("Button clicked !")
         self.button.setText("clicked")
         self.button.setDisabled(True)
         self.label5.setText("Goodbye")
-
+"""
 
 
 
