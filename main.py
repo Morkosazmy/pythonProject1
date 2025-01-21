@@ -1,10 +1,11 @@
-#GUI (6 of 9) PyQt5 Checkboxes
+#GUI (6 of 9) PyQt5 Radio buttons
 
 import sys
-from tkinter import Widget
+#from tkinter import Widget
 
 from PyQt5.QtWidgets import (QMainWindow, QApplication, QLabel, QWidget, QBoxLayout, QHBoxLayout, QGridLayout,
-                             QVBoxLayout, QPushButton, QCheckBox)
+                             QVBoxLayout, QPushButton, QCheckBox, QRadioButton, QButtonGroup)
+
 from PyQt5.QtGui import QIcon, QFont, QPixmap
 from PyQt5.QtCore import Qt
 
@@ -14,18 +15,55 @@ class MainWindow(QMainWindow):
         super().__init__()
         #self.setWindowTitle("First GUI app")
         self.setGeometry(750, 350, 500, 500)
-        self.checkbox = QCheckBox("Are you a human being ?", self)
+        self.radio1 =  QRadioButton("Visa", self)
+        self.radio2 =  QRadioButton("Master Card", self)
+        self.radio3 =  QRadioButton("Paypal", self)
+        self.radio4 =  QRadioButton("Gift Card", self)
+
+        self.radio5 = QRadioButton("online", self)
+        self.radio6 = QRadioButton("in-store", self)
+
+        self.button_group1 = QButtonGroup(self)
+        self.button_group2 = QButtonGroup(self)
+        #self.checkbox = QCheckBox("Are you a human being ?", self)
         #self.button = QPushButton("Click Here !", self)
         #self.setWindowIcon(QIcon("C:/Users/morko/Downloads/randomPhoto.JPG"))
         #self.label5 = QLabel("Hello", self)
         self.initUI()
 
     def initUI(self):
-        self.checkbox.setStyleSheet("font-size: 20px;" "font-family: bold;")
-        self.checkbox.setGeometry(10, 0, 300, 100)
-        self.checkbox.setChecked(False)
-        self.checkbox.stateChanged.connect(self.checkbox_changed)
+        #self.checkbox.setStyleSheet("font-size: 20px;" "font-family: bold;")
+        #self.checkbox.setGeometry(10, 0, 300, 100)
+        #self.checkbox.setChecked(False)
+        #self.checkbox.stateChanged.connect(self.checkbox_changed)
+        self.radio1.setGeometry(10, 10, 300, 70)
+        self.radio2.setGeometry(10, 50, 300, 70)
+        self.radio3.setGeometry(10, 90, 300, 70)
+        self.radio4.setGeometry(10, 130, 300, 70)
+        self.radio5.setGeometry(10, 170, 300, 70)
+        self.radio6.setGeometry(10, 210, 300, 70)
 
+        self.setStyleSheet("QRadioButton{"
+                           "font-size: 40px;"
+                           "font-family: arial;"
+                           "padding: 10px;"
+                           "}")
+
+        self.button_group1.addButton(self.radio1)
+        self.button_group1.addButton(self.radio2)
+        self.button_group1.addButton(self.radio3)
+        self.button_group1.addButton(self.radio4)
+
+
+        self.button_group2.addButton(self.radio5)
+        self.button_group2.addButton(self.radio6)
+
+        self.radio1.toggled.connect(self.radio_button_changed)
+        self.radio2.toggled.connect(self.radio_button_changed)
+        self.radio3.toggled.connect(self.radio_button_changed)
+        self.radio4.toggled.connect(self.radio_button_changed)
+        self.radio5.toggled.connect(self.radio_button_changed)
+        self.radio6.toggled.connect(self.radio_button_changed)
 
     """ self.button.setGeometry(150, 150, 300, 300)
         self.button.setStyleSheet("font-size: 28px;")
@@ -34,13 +72,20 @@ class MainWindow(QMainWindow):
         self.label5.setStyleSheet("font-size: 50px;")
     """
 
+    """
     def checkbox_changed(self, state):
         print(state)
         if state == Qt.Checked:
         #if state == 2:
            print("You are a human being !")
         else:
-            print("You are not a human being !")
+           print("You are not a human being !")
+    """
+
+    def radio_button_changed(self):
+        radio_button = self.sender()
+        if radio_button.isChecked():
+            print(f"{radio_button.text()} is selected")
 
 
 """
