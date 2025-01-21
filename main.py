@@ -1,4 +1,4 @@
-#GUI (6 of 9) PyQt5 Line edit widgets
+#GUI (8 of 9) PyQt5 Line edit widgets
 
 import sys
 #from tkinter import Widget
