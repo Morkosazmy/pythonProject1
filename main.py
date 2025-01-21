@@ -1,10 +1,10 @@
-#GUI (6 of 9) PyQt5 Radio buttons
+#GUI (6 of 9) PyQt5 Line edit widgets
 
 import sys
 #from tkinter import Widget
 
 from PyQt5.QtWidgets import (QMainWindow, QApplication, QLabel, QWidget, QBoxLayout, QHBoxLayout, QGridLayout,
-                             QVBoxLayout, QPushButton, QCheckBox, QRadioButton, QButtonGroup)
+                             QVBoxLayout, QPushButton, QCheckBox, QRadioButton, QButtonGroup, QLineEdit)
 
 from PyQt5.QtGui import QIcon, QFont, QPixmap
 from PyQt5.QtCore import Qt
@@ -13,18 +13,23 @@ from PyQt5.QtCore import Qt
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+
+        self.line_edit = QLineEdit(self)
+        self.button_line_edit = QPushButton("Submit", self)
+
+
         #self.setWindowTitle("First GUI app")
         self.setGeometry(750, 350, 500, 500)
-        self.radio1 =  QRadioButton("Visa", self)
-        self.radio2 =  QRadioButton("Master Card", self)
-        self.radio3 =  QRadioButton("Paypal", self)
-        self.radio4 =  QRadioButton("Gift Card", self)
+        #self.radio1 =  QRadioButton("Visa", self)
+        #self.radio2 =  QRadioButton("Master Card", self)
+        #self.radio3 =  QRadioButton("Paypal", self)
+        #self.radio4 =  QRadioButton("Gift Card", self)
 
-        self.radio5 = QRadioButton("online", self)
-        self.radio6 = QRadioButton("in-store", self)
+        #self.radio5 = QRadioButton("online", self)
+        #self.radio6 = QRadioButton("in-store", self)
 
-        self.button_group1 = QButtonGroup(self)
-        self.button_group2 = QButtonGroup(self)
+        #self.button_group1 = QButtonGroup(self)
+        #self.button_group2 = QButtonGroup(self)
         #self.checkbox = QCheckBox("Are you a human being ?", self)
         #self.button = QPushButton("Click Here !", self)
         #self.setWindowIcon(QIcon("C:/Users/morko/Downloads/randomPhoto.JPG"))
@@ -32,38 +37,52 @@ class MainWindow(QMainWindow):
         self.initUI()
 
     def initUI(self):
+        self.line_edit.setGeometry(10, 10, 200, 40)
+        self.line_edit.setStyleSheet("font-size: 20px;"
+                                     "font-family: Arial;")
+
+        self.button_line_edit.setGeometry(210, 10, 100, 40)
+        self.button_line_edit.setStyleSheet("font-size: 20px;"
+                                            "font-family: Arial;")
+        self.button_line_edit.clicked.connect(self.submit)
+
+        self.line_edit.setPlaceholderText("Enter your name")
+
+    def submit(self):
+        print("You clicked the submit button")
+        text = self.line_edit.text()
+        print(f"Hello {text}")
         #self.checkbox.setStyleSheet("font-size: 20px;" "font-family: bold;")
         #self.checkbox.setGeometry(10, 0, 300, 100)
         #self.checkbox.setChecked(False)
         #self.checkbox.stateChanged.connect(self.checkbox_changed)
-        self.radio1.setGeometry(10, 10, 300, 70)
-        self.radio2.setGeometry(10, 50, 300, 70)
-        self.radio3.setGeometry(10, 90, 300, 70)
-        self.radio4.setGeometry(10, 130, 300, 70)
-        self.radio5.setGeometry(10, 170, 300, 70)
-        self.radio6.setGeometry(10, 210, 300, 70)
+        #self.radio1.setGeometry(10, 10, 300, 70)
+        #self.radio2.setGeometry(10, 50, 300, 70)
+        #self.radio3.setGeometry(10, 90, 300, 70)
+        #self.radio4.setGeometry(10, 130, 300, 70)
+        #self.radio5.setGeometry(10, 170, 300, 70)
+        #self.radio6.setGeometry(10, 210, 300, 70)
 
-        self.setStyleSheet("QRadioButton{"
-                           "font-size: 40px;"
-                           "font-family: arial;"
-                           "padding: 10px;"
-                           "}")
+        #self.setStyleSheet("QRadioButton{"
+        #                   "font-size: 40px;"
+        #                   "font-family: arial;"
+        #                   "padding: 10px;"
+        #                   "}")
 
-        self.button_group1.addButton(self.radio1)
-        self.button_group1.addButton(self.radio2)
-        self.button_group1.addButton(self.radio3)
-        self.button_group1.addButton(self.radio4)
+#        self.button_group1.addButton(self.radio1)
+#        self.button_group1.addButton(self.radio2)
+#        self.button_group1.addButton(self.radio3)
+#        self.button_group1.addButton(self.radio4)
 
+        #        self.button_group2.addButton(self.radio5)
+        #        self.button_group2.addButton(self.radio6)
 
-        self.button_group2.addButton(self.radio5)
-        self.button_group2.addButton(self.radio6)
-
-        self.radio1.toggled.connect(self.radio_button_changed)
-        self.radio2.toggled.connect(self.radio_button_changed)
-        self.radio3.toggled.connect(self.radio_button_changed)
-        self.radio4.toggled.connect(self.radio_button_changed)
-        self.radio5.toggled.connect(self.radio_button_changed)
-        self.radio6.toggled.connect(self.radio_button_changed)
+        #  self.radio1.toggled.connect(self.radio_button_changed)
+        #  self.radio2.toggled.connect(self.radio_button_changed)
+        #  self.radio3.toggled.connect(self.radio_button_changed)
+        #  self.radio4.toggled.connect(self.radio_button_changed)
+        #  self.radio5.toggled.connect(self.radio_button_changed)
+        #  self.radio6.toggled.connect(self.radio_button_changed)
 
     """ self.button.setGeometry(150, 150, 300, 300)
         self.button.setStyleSheet("font-size: 28px;")
@@ -81,12 +100,12 @@ class MainWindow(QMainWindow):
         else:
            print("You are not a human being !")
     """
-
+"""
     def radio_button_changed(self):
         radio_button = self.sender()
         if radio_button.isChecked():
             print(f"{radio_button.text()} is selected")
-
+"""
 
 """
     def on_click(self):
